@@ -1,9 +1,8 @@
 import React from "react";
 import axios from "axios";
-import DropDown from "./DropDown";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-
+import DropDown from "./DropDown";
 const HomePage = () => {
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
@@ -20,24 +19,19 @@ const HomePage = () => {
     };
     if (search.length === 0 || search.length > 2) fetchData();
   }, [search, lable]);
-
-  let count = data.count;
-
-  if (count === 2573) {
-    count = 0;
-  } else {
-    count = data.count;
-  }
+  const count = data.count;
 
   return (
     <>
-      <>
-        <div className="mx-auto mt-20">
-          <div className="mx-20 mt-1">
+      <div className="justify-center items-end mt-7">
+      
+          <div className="mx-20 mt-1 flex items-center justify-center ">
+            <div className="w-[900px]">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
               }}
+              
             >
               <label
                 htmlFor="default-search"
@@ -66,16 +60,17 @@ const HomePage = () => {
                 <input
                   type="search"
                   id="default-search"
-                  className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none"
+                  className="block p-4 pl-10 w-full text-sm text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 bg-[#633194] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none"
                   placeholder="Search the word"
                   required
                   onChange={(e) => setSearch(e.target.value)}
                 />
-                <DropDown />
               </div>
             </form>
+            </div>
+          <DropDown />
           </div>
-        </div>
+        
 
         <div className="mx-auto p-10 ">
           <h1 className="max-auto text-green-600 text-3xl">
@@ -83,7 +78,7 @@ const HomePage = () => {
             emails that match your query.
           </h1>
         </div>
-      </>
+      </div>
     </>
   );
 };
